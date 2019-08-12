@@ -10,6 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="css/inter-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.min.css">
 
+	<!-- JS -->
+	<script src="js/vue.js"></script>
+
 	<!-- Favicon -->
     <!-- <link rel="icon" type="image/png" href="img/favicon.png"> -->
 
@@ -32,18 +35,18 @@
 	</header>
 
 	<!-- Main / Body -->
-	<main>
+	<main id="mainApp">
 		
 		<!-- Hero -->
 		<section class="hero">
 			<div class="container">
 				<div class="about">
-					<h1><span>Freelance Product Manager</span><br> specialized in digital entertainment & sports projects</h1>
-					<p>I am a passionate innovator and product specialist with extensive experience in agile product management, business development and partnerships for mobile devices, apps, sports and entertainment services in Europe and the US. Based in Berlin/Germany.</p>
+					<h1><span>{{ heroData.h1 }}</span><br>{{ heroData.h1Extra }}</h1>
+					<p>{{ heroData.summary }}</p>
 					<div class="cta">
-						<a href="mailto:mail@ralfmueller.com" class="ctaButton">Get In Touch!</a>
-						<a target="_blank" href="https://www.linkedin.com/in/ralfmuell/"><i class="fab fa-linkedin"></i></a>
-						<a target="_blank" href="https://www.xing.com/profile/Ralf_Mueller6"><i class="fab fa-xing"></i></a>
+						<a :href="links.email" class="ctaButton">Get In Touch!</a>
+						<a target="_blank" :href="links.linkedin"><i class="fab fa-linkedin"></i></a>
+						<a target="_blank" :href="links.xing"><i class="fab fa-xing"></i></a>
 					</div>
 				</div>
 				<div class="img">
@@ -56,15 +59,9 @@
 		<div class="container">
 			<section class="usps">
 				<h2>How Can I Help You?</h2>
-				<div class="usp">
-					<h3>Product Owner</h3>
-					<p>Set-up and run agile software development projects with local or distributed teams.</p>
-				</div><div class="usp">
-					<h3>Requirements Management</h3>
-					<p>Surface and analyse requirements, run design sprints, define scope and compile backlogs.</p>
-				</div><div class="usp">
-					<h3>Partner Management</h3>
-					<p>Find and engage project partners and suppliers. Run RFI/RFQ processes to select the best tech stack.</p>
+				<div class="usp" v-for="usp in usps">
+					<h3>{{ usp.title }}</h3>
+					<p>{{ usp.desc }}</p>
 				</div>
 			</section>
 		</div>
@@ -72,8 +69,8 @@
 		<!-- Quote -->
 		<div class="container outerContainer">
 			<section class="quote">
-				<p>“A great product manager has the brain of an engineer, the heart of a designer, and the speech of a diplomat.”</p>
-				<div class="credit"><a target="_blank" href="https://twitter.com/deepnishar">@deepnishar</a></div>
+				<p>{{ landingQuote.quote }}</p>
+				<div class="credit"><a target="_blank" :href="landingQuote.creditLink">{{ landingQuote.credit }}</a></div>
 			</section>
 		</div>
 
@@ -81,31 +78,14 @@
 		<div class="container">
 			<section class="projects">
 				<h2>Projects</h2>
-				<div class="project">
+				<div class="project" v-for="project in projects">
 					<div class="text">
-						<h3>Content Management System Overhaul: UEFA</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure… <a href="#">continue reading</a></p>
-						<p class="projectDuration">Jan 2017 &nbsp;–&nbsp; Dec 2018</p>
+						<a :href="project.link"><h3>{{ project.name }}</h3></a>
+						<p v-if="project.text.length < 256"> {{ project.text }}... <a :href="project.link"> continue reading</a></p>
+						<p v-else> {{ project.text.substring(0,256) }}... <a :href="project.link"> continue reading</a></p>
+						<p class="projectDuration">{{ project.projectStart }} &nbsp;–&nbsp; {{ project.projectEnd }}</p>
 					</div><div class="image">
-						<img src="img/tennis.png" alt="HEAD tennis rackets equiped with a new sensor"/>
-					</div>
-				</div>
-				<div class="project">
-					<div class="text">
-						<h3>Product Management: Tennis Sensor with HEAD</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure… <a href="#">continue reading</a></p>
-						<p class="projectDuration">Jan 2017 &nbsp;–&nbsp; Dec 2018</p>
-					</div><div class="image">
-						<img src="img/tennis.png" alt="HEAD tennis rackets equiped with a new sensor"/>
-					</div>
-				</div>
-				<div class="project">
-					<div class="text">
-						<h3>Product Management: Music Streaming – AMPYA</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure… <a href="#">continue reading</a></p>
-						<p class="projectDuration">Jan 2017 &nbsp;–&nbsp; Dec 2018</p>
-					</div><div class="image">
-						<img src="img/tennis.png" alt="HEAD tennis rackets equiped with a new sensor"/>
+						<a :href="project.link"><img :src="project.teaserImage" :alt="project.teaserAlt"/></a>
 					</div>
 				</div>
 			</section>
@@ -115,11 +95,11 @@
 		<div class="container outerContainer">
 			<section class="ctaSection">
 				<div class="cta">
-					<a target="_blank" href="https://www.linkedin.com/in/ralfmuell/"><i class="fab fa-linkedin"></i></a>
-					<a target="_blank" href="https://www.xing.com/profile/Ralf_Mueller6"><i class="fab fa-xing"></i></a>
-					<a href="mailto:ralfmuell@gmail.com" class="ctaButton">Get In Touch!</a>
-					<a target="_blank" href="https://www.instagram.com/ralfmuell/"><i class="fab fa-instagram"></i></a>
-					<a target="_blank" href="https://www.twitter.com/ralfmuell/"><i class="fab fa-twitter"></i></a>
+					<a target="_blank" :href="links.linkedin"><i class="fab fa-linkedin"></i></a>
+					<a target="_blank" :href="links.xing"><i class="fab fa-xing"></i></a>
+					<a :href="links.email" class="ctaButton">Get In Touch!</a>
+					<a target="_blank" :href="links.instagram"><i class="fab fa-instagram"></i></a>
+					<a target="_blank" :href="links.twitter"><i class="fab fa-twitter"></i></a>
 				</div>
 			</section>
 		</div>
@@ -127,9 +107,14 @@
 	</main>
 
 	<!-- Footer -->
-	<footer>
-		<p>&copy; 2018 Ralf Mueller - Berlin (Germany)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html">Legal Notice</a></p>
+	<footer id="footer">
+		<p>&copy; {{ fundamentals.year }} Ralf Mueller - {{ fundamentals.location }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html">Legal Notice</a></p>
 	</footer>
+
+	<!-- JS -->
+	<script src="_src/js/data.js"></script>
+	<script src="js/index.min.js"></script>
+	<script src="js/footer.min.js"></script>
 
 </body>
 </html>

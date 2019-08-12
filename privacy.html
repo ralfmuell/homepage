@@ -10,6 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="css/inter-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/legal.min.css">
 
+	<!-- JS -->
+	<script src="js/vue.js"></script>
+
 	<!-- Favicon -->
     <!-- <link rel="icon" type="image/png" href="img/favicon.png"> -->
 
@@ -57,9 +60,12 @@
 	</main>
 
 	<!-- Footer -->
-	<footer>
-		<p>&copy; 2018 Ralf Mueller - Berlin (Germany)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html">Legal Notice</a></p>
+	<footer id="footer">
+		<p>&copy; {{ fundamentals.year }} Ralf Mueller - {{ fundamentals.location }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html">Legal Notice</a></p>
 	</footer>
+
+	<script src="_src/js/data.js"></script>
+	<script src="js/footer.min.js"></script>
 
 </body>
 </html>

@@ -2,12 +2,12 @@ var data = {
 	fundamentals: {
 		name: "Ralf Müller",
 		phone: "+491754488336",
-		email: "ralfmuell@gmail.com",
-		year: "2019",
+		email: "mail@ralfmueller.com",
+		year: "2020",
 		location: "Berlin (Germany)"
 	},
     links: {
-    	email: "mailto:ralfmuell@gmail.com",
+    	email: "mailto:mail@ralfmueller.com",
     	linkedin: "https://www.linkedin.com/in/ralfmuell/",
     	xing: "https://www.xing.com/profile/Ralf_Mueller6",
     	instagram: "https://www.instagram.com/ralfmuell/",

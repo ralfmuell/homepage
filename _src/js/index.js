@@ -3,7 +3,7 @@ var app = new Vue({
     data: {
     	links: data.links,
     	heroData: data.heroData,
-    	usps: data.usps,
+    	uspSection: data.uspSection,
     	landingQuote: data.landingQuote,
         projects: data.projects.slice().reverse()
     }

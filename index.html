@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 	<meta charset="UTF-8"/>
-	<title>Ralf Müller &raquo; Product Manager</title>
+	<title>Ralf Müller - Product Manager</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
@@ -14,14 +14,20 @@
 	<script src="js/vue.min.js"></script>
 
 	<!-- Favicon -->
-    <!-- <link rel="icon" type="image/png" href="img/favicon.png"> -->
+	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.jpg">
+	<link rel="icon" sizes="128x128" type="image/png" href="img/favicon.png">
+	<link rel="icon" sizes="32x32" type="image/png" href="img/favicon-32x32.png">
 
-    <!-- Meta Tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <!-- Meta Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 
-    <meta name="author" content="Ralf Mueller">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+	<meta name="author" content="Ralf Mueller">
+  <meta name="description" content="Freelance product manager specialized in digital entertainment & sports projects">
+	<meta name="keywords" content="project manager, product, produktmanager, berlin, freelance, interim">
+	
+	<meta property="og:title" content="Ralf Mueller - Product Manager">
+	<meta property="og:type" content="website">
+	<meta name="og:description" content="Freelance product manager specialized in digital entertainment & sports projects">
 
 </head>
 <body>
@@ -59,7 +65,8 @@
 		<div class="container">
 			<section class="usps">
 				<h2>How Can I Help You?</h2>
-				<div class="usp" v-for="usp in usps">
+				<p>{{ uspSection.intro }}</p>
+				<div class="usp" v-for="usp in uspSection.usps">
 					<h3>{{ usp.title }}</h3>
 					<p>{{ usp.desc }}</p>
 				</div>
@@ -74,7 +81,7 @@
 			</section>
 		</div>
 
-		<!-- Projects -->
+		<!-- Projects 
 		<div class="container">
 			<section class="projects">
 				<h2>Projects</h2>
@@ -90,6 +97,7 @@
 				</div>
 			</section>
 		</div>
+		-->
 
 		<!-- CTA Section -->
 		<div class="container outerContainer">
@@ -108,7 +116,7 @@
 
 	<!-- Footer -->
 	<footer id="footer">
-		<p>&copy; {{ fundamentals.year }} Ralf Mueller - {{ fundamentals.location }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html">Legal Notice</a></p>
+		<p>&copy; {{ fundamentals.year }} Ralf Mueller - {{ fundamentals.location }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html" rel=”nofollow”>Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html" rel=”nofollow”>Legal Notice</a></p>
 	</footer>
 
 	<!-- JS -->

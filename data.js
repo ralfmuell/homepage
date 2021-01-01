@@ -3,7 +3,7 @@ var data = {
 		name: "Ralf Müller",
 		phone: "+491754488336",
 		email: "mail@ralfmueller.com",
-		year: "2020",
+		year: "2021",
 		location: "Berlin (Germany)"
 	},
     links: {

@@ -2,127 +2,99 @@
 <html lang="de">
 <head>
 	<meta charset="UTF-8"/>
-	<title>Ralf Müller - Product Manager</title>
-
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/inter-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.min.css">
-
-	<!-- JS -->
-	<script src="js/vue.min.js"></script>
+	<title>Ralf Müller</title>
 
 	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.jpg">
 	<link rel="icon" sizes="128x128" type="image/png" href="img/favicon.png">
 	<link rel="icon" sizes="32x32" type="image/png" href="img/favicon-32x32.png">
 
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
   <!-- Meta Tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 
-	<meta name="author" content="Ralf Mueller">
-  <meta name="description" content="Freelance product manager specialized in digital entertainment & sports projects">
-	<meta name="keywords" content="project manager, product, produktmanager, berlin, freelance, interim">
-	
-	<meta property="og:title" content="Ralf Mueller - Product Manager">
-	<meta property="og:type" content="website">
-	<meta name="og:description" content="Freelance product manager specialized in digital entertainment & sports projects">
-
 </head>
 <body>
-
-	<!-- Top Page Header -->
-	<header>
-		<div class="container">
-			<!-- Logo -->
-			<img src="img/logo.svg" alt="Ralf Mueller"/>
-		</div>
-	</header>
-
-	<!-- Main / Body -->
-	<main id="mainApp">
-		
-		<!-- Hero -->
-		<section class="hero">
-			<div class="container">
-				<div class="about">
-					<h1><span>{{ heroData.h1 }}</span><br>{{ heroData.h1Extra }}</h1>
-					<p>{{ heroData.summary }}</p>
-					<div class="cta">
-						<a :href="links.email" class="ctaButton">Get In Touch!</a>
-						<a target="_blank" :href="links.linkedin"><i class="fab fa-linkedin"></i></a>
-						<a target="_blank" :href="links.xing"><i class="fab fa-xing"></i></a>
-					</div>
-				</div>
-				<div class="img">
-					<img src="img/profile.jpg" alt="Ralf Mueller Profile Picture" title="Ralf Mueller"/>
-				</div>
-			</div>
-		</section>
-
-		<!-- USPs -->
-		<div class="container">
-			<section class="usps">
-				<h2>How Can I Help You?</h2>
-				<p>{{ uspSection.intro }}</p>
-				<div class="usp" v-for="usp in uspSection.usps">
-					<h3>{{ usp.title }}</h3>
-					<p>{{ usp.desc }}</p>
-				</div>
-			</section>
-		</div>
-
-		<!-- Quote -->
-		<div class="container outerContainer">
-			<section class="quote">
-				<p>{{ landingQuote.quote }}</p>
-				<div class="credit"><a target="_blank" :href="landingQuote.creditLink">{{ landingQuote.credit }}</a></div>
-			</section>
-		</div>
-
-		<!-- Projects 
-		<div class="container">
-			<section class="projects">
-				<h2>Projects</h2>
-				<div class="project" v-for="project in projects">
-					<div class="text">
-						<a :href="project.link"><h3>{{ project.name }}</h3></a>
-						<p v-if="project.text.length < 256"> {{ project.text }}... <a :href="project.link"> continue reading</a></p>
-						<p v-else> {{ project.text.substring(0,256) }}... <a :href="project.link"> continue reading</a></p>
-						<p class="projectDuration">{{ project.projectStart }} &nbsp;–&nbsp; {{ project.projectEnd }}</p>
-					</div><div class="image">
-						<a :href="project.link"><img :src="project.teaserImage" :alt="project.teaserAlt"/></a>
-					</div>
-				</div>
-			</section>
-		</div>
-		-->
-
-		<!-- CTA Section -->
-		<div class="container outerContainer">
-			<section class="ctaSection">
-				<div class="cta">
-					<a target="_blank" :href="links.linkedin"><i class="fab fa-linkedin"></i></a>
-					<a target="_blank" :href="links.xing"><i class="fab fa-xing"></i></a>
-					<a :href="links.email" class="ctaButton">Get In Touch!</a>
-					<a target="_blank" :href="links.instagram"><i class="fab fa-instagram"></i></a>
-					<a target="_blank" :href="links.twitter"><i class="fab fa-twitter"></i></a>
-				</div>
-			</section>
-		</div>
-
+	<main>
+		<div></div>
+		<a class="floppy-container" href="https://www.linkedin.com/in/ralfmuell/" rel="noopener noreferrer">
+			<img draggable="false" src="./floppy.png" width="80px" height="80px" loading="eager" />
+			<div class="shimmer"></div>
+		</a>
+		<p>&copy; 1993 Ralf Müller</p>
 	</main>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<p>&copy; {{ fundamentals.year }} Ralf Mueller - {{ fundamentals.location }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="privacy.html" rel=”nofollow”>Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="legal.html" rel=”nofollow”>Legal Notice</a></p>
-	</footer>
-
-	<!-- JS -->
-	<script src="data.js"></script>
-	<script src="js/index.min.js"></script>
-	<script src="js/footer.min.js"></script>
-
+	<script type="text/javascript">
+		// 3D tilt effect for floppy disk
+		const floppyContainer = document.querySelector('.floppy-container');
+		const shimmer = document.querySelector('.shimmer');
+		let isActive = false;
+		let lastMoveTime = 0;
+		let idleTimerId = null;
+		
+		// Debounce function to prevent too many state changes
+		function debounce(func, delay) {
+			let timeoutId;
+			return function(...args) {
+				clearTimeout(timeoutId);
+				timeoutId = setTimeout(() => func.apply(this, args), delay);
+			};
+		}
+		
+		// Function to reset to idle state
+		const resetToIdle = () => {
+			if (isActive) {
+				isActive = false;
+				floppyContainer.style.transform = 'rotateY(0deg) rotateX(0deg)';
+				shimmer.style.opacity = 0;
+			}
+		};
+		
+		// Debounced version of reset function
+		const debouncedResetToIdle = debounce(resetToIdle, 1000);
+		
+		document.addEventListener('mousemove', (e) => {
+			if (!floppyContainer) return;
+			
+			lastMoveTime = Date.now();
+			isActive = true;
+			
+			// Get the position of the container
+			const rect = floppyContainer.getBoundingClientRect();
+			
+			// Calculate the center of the container
+			const containerCenterX = rect.left + rect.width / 2;
+			const containerCenterY = rect.top + rect.height / 2;
+			
+			// Calculate the distance from the mouse to the center
+			const distanceX = e.clientX - containerCenterX;
+			const distanceY = e.clientY - containerCenterY;
+			
+			// Calculate the rotation angle (limited to 15 degrees)
+			const maxRotation = 15;
+			const rotationY = Math.min(Math.max((distanceX / window.innerWidth) * 50, -maxRotation), maxRotation);
+			const rotationX = Math.min(Math.max(-(distanceY / window.innerHeight) * 50, -maxRotation), maxRotation);
+			
+			// Apply the rotation
+			floppyContainer.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+			
+			// Adjust shimmer opacity based on tilt angle
+			const tiltMagnitude = Math.sqrt(rotationX * rotationX + rotationY * rotationY) / maxRotation;
+			shimmer.style.opacity = tiltMagnitude * 0.8;
+			
+			// Schedule reset to idle after inactivity
+			debouncedResetToIdle();
+		});
+		
+		// Reset position when mouse leaves the document
+		document.addEventListener('mouseleave', () => {
+			if (!floppyContainer) return;
+			floppyContainer.style.transform = 'rotateY(0deg) rotateX(0deg)';
+			shimmer.style.opacity = 0;
+		});
+	</script>
 </body>
 </html>
